@@ -1,0 +1,17 @@
+{% set posts = __SELF__.posts %}
+
+{% for post in posts %}
+    <div class="container-fluid py-3" id="quick-news">
+        <div class="container-lg content text-white d-flex align-items-center justify-content-between gap-2 fs-4">
+{#            <p class="mb-0">#}
+{#                <i class="ph ph-info h2 text-white"></i>#}
+{#            </p>#}
+
+            <p class="mb-0 d-none d-xl-inline-flex align-items-xl-center">
+                {{ post.title }} <i class="ph ph-arrow-right ms-2"></i>
+            </p>
+
+            {{ post.content|raw }}
+        </div>
+    </div>
+{% endfor %}

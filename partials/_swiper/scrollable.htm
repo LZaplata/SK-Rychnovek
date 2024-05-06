@@ -1,0 +1,13 @@
+<div class="swiper scrollable-swiper">
+    <div class="swiper-wrapper">
+        {% for key, item in items %}
+            <div class="swiper-slide">
+                {% partial partial key=key item=item image=item.image %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="container-lg">
+        <div class="swiper-scrollbar position-relative start-0 end-0 w-100 bottom-0 mt-4 mt-xl-5"></div>
+    </div>
+</div>

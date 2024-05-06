@@ -1,0 +1,128 @@
+footer
+    .top
+        font-size: $footer-font-size
+        color: $footer-color
+        background-color: $footer-bg
+
+        .col
+            .mi-logo
+                background-color: $footer-logo-bg
+                transition: $transition-base
+
+                &:hover
+                    background-color: $footer-logo-hover-bg
+
+            .toggler
+                color: $footer-toggler-color
+                transition: $transition-base
+
+                &.collapsed
+                    transform: rotate(180deg)
+
+            .heading
+                color: $footer-heading-color
+                font-size: $footer-heading-font-size
+                font-weight: $footer-heading-font-weight
+                font-family: $footer-heading-font-family
+                position: relative
+                //padding-bottom: 7px
+
+                //&:after
+                    content: ""
+                    position: absolute
+                    width: 10px
+                    height: 2px
+                    bottom: 0
+                    background-color: $footer-heading-color
+                    left: 0
+
+            & > .collapse
+                @include media-breakpoint-up(sm)
+                    border-top: none !important
+                    display: block
+
+                .contact
+                    font-size: $footer-contact-font-size
+
+                    a
+                        color: $footer-contact-link-color
+                        transition: $transition-base
+                        position: relative
+                        display: inline-flex
+                        width: max-content
+                        text-decoration: underline
+                        text-decoration-thickness: $footer-contact-link-underline-height
+                        text-underline-color: $footer-contact-link-underline-color
+
+                        &:hover
+                            color: $footer-contact-link-hover-color
+
+                    .phone
+                        font-size: $footer-contact-phone-font-size
+
+                    .email
+                        font-size: $footer-contact-email-font-size
+
+            & > .border-top
+                --bs-border-color: transparent
+
+                @include media-breakpoint-down($footer-column-border-breakpoint)
+                    --bs-border-color: #{$footer-column-border-color}
+
+    .bottom
+        background-color: $footer-bottom-bg
+        font-size: $footer-bottom-font-size
+        color: $footer-bottom-color
+
+        .border-top
+            --bs-border-color: #{$footer-bottom-border-color}
+
+    .socials
+        a
+            color: $footer-socials-link-color
+            transition: $transition-base
+            font-size: $footer-socials-link-font-size
+
+            .icon
+                background-color: $footer-socials-icon-color
+                transition: $transition-base
+
+            &:hover
+                color: $footer-socials-link-hover-color
+
+                .icon
+                    background-color: $footer-socials-icon-hover-color
+
+    .mi-signature
+        background-color: $footer-signature-color
+        transition: $transition-base
+
+        &:hover
+            background-color: $footer-signature-hover-color
+
+    .nav
+        li
+            @if $footer-nav-link-before-content != "none"
+                padding-left: 10px
+                position: relative
+
+            &:before
+                content: $footer-nav-link-before-content
+                color: $footer-nav-link-before-color
+                left: 0
+                position: absolute
+                top: $footer-nav-link-before-top
+                font-size: $footer-nav-link-before-font-size
+                font-family: $footer-nav-link-before-font-family
+
+            a
+                color: $footer-nav-link-color
+                font-size: $footer-nav-link-font-size
+                font-weight: $footer-nav-link-font-weight
+                display: inline-flex
+                text-decoration: underline
+                text-decoration-thickness: $footer-nav-link-underline-height
+                text-underline-color: $footer-nav-link-underline-color
+
+                &:hover
+                    color: $footer-nav-link-hover-color

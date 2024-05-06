@@ -1,0 +1,154 @@
+url = "/turnaj/:slug?2024"
+layout = "default"
+title = "Turnaj"
+
+[staticMenu leftmenu]
+
+[section cup]
+handle = "Cups\Cup"
+identifier = "slug"
+value = "{{ :slug }}"
+
+[collection matches]
+handle = "Cups\Match"
+
+[collection slider]
+handle = "Slider\Slide"
+
+[global slider_settings]
+handle = "Slider\Settings"
+==
+<?php
+use Tailor\Models\EntryRecord;
+
+function onStart() {
+    $tables = [];
+
+    foreach ($this["cup"]->structure as $structure) {
+        if ($structure->stage == "groups") {
+            foreach ($structure->groups as $group) {
+                $scoreForSelect = "SUM(IF(teams.id = matches.home_team_id, matches.home_score, 0)) +
+                    SUM(IF(teams.id = matches.away_team_id, matches.away_score, 0))";
+
+                $scoreAgainstSelect = "SUM(IF(teams.id = matches.home_team_id, matches.away_score, 0)) +
+                    SUM(IF(teams.id = matches.away_team_id, matches.home_score, 0))";
+
+                $tables[$group->group->id] = Db::table("xc_lzaplata_cups_teamc", "teams")
+                    ->select("teams.title AS team")
+                    ->addSelect(
+                        Db::raw(
+                            "SUM(IF(teams.id = matches.home_team_id AND matches.home_score > matches.away_score, 3, 0)) +
+                            SUM(IF(teams.id = matches.away_team_id AND matches.away_score > matches.home_score, 3, 0)) +
+                            SUM(IF(matches.home_score = matches.away_score, 1, 0)) AS points"
+                        ))
+                    ->addSelect(Db::raw($scoreForSelect . " AS score_for"))
+                    ->addSelect(Db::raw($scoreAgainstSelect . " AS score_against"))
+                    ->addSelect(Db::raw("(" . $scoreForSelect . ") - (" . $scoreAgainstSelect . ") AS score_difference"))
+                    ->join("xc_lzaplata_cups_matchc AS matches", function($join) {
+                        $join->on("teams.id", "=", "matches.home_team_id")
+                            ->orOn("teams.id", "=", "matches.away_team_id")
+                            ->where("matches.group_id", "=", 1);
+                    })
+                    ->groupBy("teams.title")
+                    ->orderByDesc("points")
+                    ->orderByDesc("score_difference")
+                    ->get();
+            }
+        }
+    }
+
+    dump($tables);
+
+    $this["cup_tables"] = $tables;
+}
+?>
+==
+<div class="container-fluid py-5" id="page">
+    <div class="container-lg">
+        <div class="row g-5">
+            {% if leftmenu.menuItems is not null %}
+                <div class="sidebar d-none d-xl-block col-xl-3">
+                    {% component "leftmenu" %}
+                </div>
+            {% endif %}
+
+            <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
+                <h1 class="mb-4 text-center">
+                    {{ cup.title }}
+                </h1>
+
+                <div class="contents d-flex flex-column gap-5">
+                    <div class="content content-text content-cups d-flex flex-column gap-5">
+                        {% for structure in cup.structure %}
+                            {% if structure.stage == "groups" %}
+                                {% set points = [] %}
+
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+                                    {% for group in structure.groups %}
+                                        <div class="col">
+                                            <h2 class="h3 mb-3">
+                                                {{ group.group.title }}
+                                            </h2>
+
+                                            <div class="d-flex flex-column mb-3">
+                                                {% for match in matches.where("group_id", "=", group.group.id).orderBy("date", "asc").get %}
+                                                    <p class="mb-0 d-flex justify-content-between">
+                                                        <span>
+                                                            {{ match.title }}
+                                                        </span>
+
+                                                        {% if match.home_score and match.away_score %}
+                                                            <span>
+                                                                {{ match.home_score }} : {{ match.away_score }}
+                                                            </span>
+                                                        {% endif %}
+                                                    </p>
+                                                {% endfor %}
+                                            </div>
+
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Tým
+                                                        </th>
+
+                                                        <th>
+                                                            Skóre
+                                                        </th>
+
+                                                        <th>
+                                                            Body
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    {% for position in cup_tables[group.group.id] %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ position.team }}
+                                                            </td>
+
+                                                            <td>
+                                                                {{ position.score_for }}:{{ position.score_against }}
+                                                            </td>
+
+                                                            <td>
+                                                                {{ position.points }}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

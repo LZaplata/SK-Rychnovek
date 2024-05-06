@@ -1,0 +1,93 @@
+name: 'SK Rychnovek'
+description: 'Theme for netball team SK Rychnovek.'
+author: 'Lukáš Záplata'
+homepage: ''
+authorCode: LZaplata
+code: skrychnovek
+parent: ''
+database: '0'
+require:
+    - initbiz.seostorm
+    - rainlab.pages
+    - rainlab.blog
+    - janvince.smallgdpr
+    - lzaplata.extensions
+    - lzaplata.gallery
+form:
+    tabs:
+        fields:
+            phone:
+                label: Telefon
+                type: text
+                span: left
+                tab: Kontakt
+            email:
+                label: E-mail
+                type: text
+                span: right
+                tab: Kontakt
+            street:
+                label: Ulice
+                type: text
+                span: left
+                tab: Kontakt
+            street_no:
+                label: 'Číslo domu'
+                type: text
+                span: right
+                tab: Kontakt
+            city:
+                label: Město
+                type: text
+                span: left
+                tab: Kontakt
+            zip:
+                label: PSČ
+                type: text
+                span: right
+                tab: Kontakt
+            map_link:
+                label: 'Odkaz na mapu'
+                type: text
+                span: left
+                tab: Kontakt
+            company_id:
+                label: IČO
+                type: text
+                span: left
+                tab: Kontakt
+            company_vat_id:
+                label: DIČ
+                type: text
+                span: right
+                tab: Kontakt
+            company_registration:
+                label: Registrace
+                commentAbove: 'Text k registraci v firmy v živnostenském rejstříku'
+                type: textarea
+                tab: Kontakt
+            facebook:
+                label: Facebook
+                type: text
+                span: left
+                tab: 'Sociální sítě'
+            instagram:
+                label: Instagram
+                type: text
+                span: right
+                tab: 'Sociální sítě'
+            youtube:
+                label: Youtube
+                type: text
+                span: left
+                tab: 'Sociální sítě'
+            mottos:
+                label: Motta
+                type: repeater
+                tab: Motta
+                itemsExpanded: false
+                form:
+                    fields:
+                        motto:
+                            label: Motto
+                            type: text

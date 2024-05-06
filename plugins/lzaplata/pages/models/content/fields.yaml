@@ -1,0 +1,39 @@
+fields:
+    title:
+        label: 'lzaplata.pages::lang.content.field.title.label'
+        span: left
+        type: text
+    type:
+        label: 'lzaplata.pages::lang.content.field.type.label'
+        optionsMethod: getTypeOptions
+        showSearch: true
+        span: right
+        type: dropdown
+    heading:
+        label: 'lzaplata.pages::lang.content.field.heading.label'
+        span: full
+        type: text
+        trigger:
+            action: show
+            field: type
+            condition: 'value[text][gallery][faq]'
+    text:
+        label: 'lzaplata.pages::lang.content.field.text.label'
+        size: giant
+        span: full
+        trigger:
+            action: show
+            field: type
+            condition: 'value[text]'
+        type: richeditor
+    gallery:
+        label: 'lzaplata.pages::lang.content.field.gallery.label'
+        nameFrom: name
+        descriptionFrom: description
+        emptyOption: 'lzaplata.pages::lang.content.field.gallery.prompt'
+        span: left
+        type: relation
+        trigger:
+            action: show
+            field: type
+            condition: 'value[gallery]'

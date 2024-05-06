@@ -1,0 +1,43 @@
+url = "/muzea-expozice/muzeum-krkonos/akce/:id/:slug"
+layout = "default"
+title = "Detail akce Muzeum Krkonoš"
+seoOptionsMetaTitle = "{{ page.title }}"
+
+[page]
+column = "slug"
+value = "akce"
+
+[staticMenu leftmenu]
+code = "muzeumkrkonos"
+
+[breadcrumbs]
+
+[event]
+id = "{{ :id }}"
+==
+<?php
+function onInit()
+{
+    $this["activeMenuItem"] = "events";
+}
+?>
+==
+<div class="container-fluid mt-4">
+    <div class="container-lg">
+        {% component "breadcrumbs" %}
+    </div>
+</div>
+
+<div class="container-fluid py-5 border-1 border-bottom border-light" id="page">
+    <div class="container-lg">
+        <div class="row g-5">
+            <div class="sidebar d-none d-xl-block col-xl-3">
+                {% component "leftmenu" %}
+            </div>
+
+            <div class="col col-xl-9">
+                {% component "event" %}
+            </div>
+        </div>
+    </div>
+</div>

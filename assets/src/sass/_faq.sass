@@ -1,0 +1,21 @@
+#accordion-faq
+    .accordion-item
+        border-left-width: $faq-accordion-item-border-x
+        border-right-width: $faq-accordion-item-border-x
+
+        .accordion-button
+            font-size: $faq-accordion-button-font-size
+            font-weight: $faq-accordion-button-font-weight
+
+            .number
+                font-size: $faq-accordion-number-font-size
+                font-weight: $faq-accordion-number-font-weight
+                color: $faq-accordion-number-color
+                width: $faq-accordion-number-size
+                height: $faq-accordion-number-size
+                background-color: $faq-accordion-number-bg
+
+        .accordion-body
+            padding-top: 0
+            padding-right: 0
+            padding-left: calc($faq-accordion-number-size + 1rem)

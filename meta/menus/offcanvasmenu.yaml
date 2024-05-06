@@ -1,0 +1,76 @@
+items:
+    -
+        title: MČR
+        nesting: null
+        type: cms-page
+        url: null
+        code: cup
+        reference: turnaj
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Sporty
+        type: cms-page
+        code: ''
+        reference: sporty
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Tenis
+                nesting: 0
+                type: blog-category
+                code: ''
+                reference: '2'
+                cmsPage: novinky-kategorie
+                replace: 0
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Rezervace
+        nesting: null
+        type: url
+        url: '#rezervace'
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'O nás'
+        nesting: null
+        type: url
+        url: '#o-nas'
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Kontakt
+        nesting: null
+        type: url
+        url: '#kontakt'
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Offcanvas Menu'

@@ -1,0 +1,47 @@
+uuid: lzaplata_portfolio_categories
+handle: Portfolio\Category
+type: structure
+name: Kategorie
+drafts: false
+showImport: false
+showExport: false
+
+structure:
+    maxDepth: 1
+
+navigation:
+    icon: icon-folder-o
+    parent: Portfolio\Reference
+    order: 20
+
+fields:
+    description:
+        label: Popis
+        type: textarea
+        size: small
+    tags:
+        label: Tagy
+        type: taglist
+        span: left
+        column: false
+    banner_sm:
+        label: Malý banner
+        type: fileupload
+        span: left
+        fileTypes: png,jpg,jpeg,webp
+        maxFiles: 1
+        column: false
+    banner_lg:
+        label: Velký banner
+        type: fileupload
+        span: right
+        fileTypes: png,jpg,jpeg,webp
+        maxFiles: 1
+        column: false
+    images:
+        label: Obrázky
+        type: fileupload
+        span: left
+        fileTypes: png,jpg,jpeg,webp
+        maxFiles: 3
+        column: false

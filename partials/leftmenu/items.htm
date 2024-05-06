@@ -1,0 +1,17 @@
+{% for item in items %}
+    {% if not item.viewBag.isHidden %}
+        <li class="nav-item d-inline-flex align-items-center {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }} {{ item.viewBag.cssClass }}">
+            {% if item.url %}
+                <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav-link {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }}">
+                    {{ item.title }}
+                </a>
+
+                {% if item.viewBag.isExternal %}
+                    <i class="ph ph-arrow-up-right ms-2 external-link-icon"></i>
+                {% endif %}
+            {% else %}
+                <span>{{ item.title }}</span>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,129 @@
+@import "custom"
+@import "header"
+@import "offcanvas"
+@import "slider"
+@import "footer"
+@import "post"
+@import "content"
+@import "map"
+@import "sidebar"
+@import "breadcrumbs"
+@import "faq"
+@import "quick-news"
+
+header
+    padding-top: 2rem
+    padding-bottom: 2rem
+
+    .logo
+        z-index: 2
+        top: -30px
+
+    .nav
+        .nav-item
+            .nav-link
+                letter-spacing: 1.5px
+
+.slider-swiper-wrapper, .banner
+    .gradient
+        //background: linear-gradient(180deg, transparentize($white, .20) 0%, transparentize($white, 1) 100%)
+        z-index: 5
+
+    .info
+        z-index: 7
+        top: 50%
+        transform: translateY(-50%) translateX(-50%) !important
+        background: rgba($black, .3)
+
+        .title
+            letter-spacing: 2px
+
+.claim-swiper
+    padding-bottom: 50px !important
+
+    .swiper-wrapper
+        .swiper-slide
+            letter-spacing: 1px
+
+    .swiper-pagination
+        --swiper-pagination-bottom: 0
+        --swiper-pagination-bullet-inactive-color: #{$brown-300}
+        --swiper-pagination-bullet-inactive-opacity: 1
+        --swiper-theme-color: #{$primary}
+        --swiper-pagination-bullet-horizontal-gap: 8px
+
+        &-bullet
+            &-active
+                outline: 5px solid $brown-200
+
+.portfolio
+    .nav
+        --bs-nav-underline-link-active-color: #{$primary}
+        --bs-nav-underline-border-width: 2px
+        --bs-nav-link-font-size: #{$nav-link-font-size}
+        --bs-nav-link-color: #{$brown-300}
+        --bs-nav-underline-gap: 0
+
+        .nav-item
+            .nav-link
+                letter-spacing: 2px
+                padding-bottom: 10px
+
+            @include media-breakpoint-up(md)
+                .nav-link
+                    &:not(.active)
+                        border-color: $brown-100
+
+            @include media-breakpoint-down(md)
+                width: 100%
+
+                &:not(:first-child)
+                    .nav-link
+                        padding-top: 10px
+
+    &-categories
+        .description
+            color: $brown-300
+
+            *
+                &:last-child
+                    margin-bottom: 0
+
+    &-references
+        .description
+            *
+                &:last-child
+                    margin-bottom: 0
+
+        .reference
+            .images
+                .image
+                    .more
+                        background: rgba(var(--bs-black-rgb), .7)
+
+#contact
+    .bg
+        left: 60%
+
+        img
+            height: 115%
+
+#cookies-bar
+    @include media-breakpoint-down(md)
+        left: 20px !important
+
+#sg-settings-modal-cookiesbar
+    .modal-dialog
+        .modal-content
+            padding: 40px
+
+            .modal-header
+                padding: 0
+                border-bottom: none
+
+            .modal-body
+                padding: 0
+
+            .modal-footer
+                padding: 0
+                border-top: none

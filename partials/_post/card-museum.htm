@@ -1,0 +1,23 @@
+<div class="post post-card">
+    <a href="{{ item.url|link }}" class="position-relative d-flex flex-column gap-3" {% if "krnap.cz" in item.url %}target="_blank"{% endif %}>
+        {% if image %}
+            <p class="img mb-0 position-relative overflow-hidden">
+                {% if image.path %}
+                    <img src="{{ image.thumb(600, 400, {"mode": "crop"}) }}" alt="{{ image.description }}" class="img-fluid w-100">
+                {% else %}
+                    <img src="{{ image|media }}" alt="{{ image.description }}" class="img-fluid w-100">
+                {% endif %}
+
+                <span class="overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                    <i class="ph ph-arrow-circle-up-right icon"></i>
+                </span>
+            </p>
+        {% endif %}
+
+        <h3 class="title mb-0 d-flex align-items-baseline">
+            <img src="{{ ['assets/images/icons/', key + 1, '.svg']|join|theme }}" alt="{{ key + 1 }}" class="me-3">
+
+            {{ item.title }}
+        </h3>
+    </a>
+</div>

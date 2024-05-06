@@ -1,0 +1,51 @@
+{% set event = __SELF__.event %}
+
+{% if event %}
+    <h1 class="mb-4">
+        {{ event.nazevAkce }}
+    </h1>
+
+    <div class="content content-text event">
+        <p>
+            {{ event.TextAkce|raw|bootstrap }}
+        </p>
+    </div>
+
+    <div class="mt-4 row">
+        <div class="col-12 col-sm-6 col-md-auto">
+            <img src="{{ event.letakAkceNormal }}" alt="{{ image.description }}" class="img-fluid w-100">
+        </div>
+
+        <div class="col-12 mt-4 col-sm mt-sm-0">
+            <p class="mb-0 d-flex flex-column gap-2 text-dark">
+                <span>
+                    {{ event.kategorieAkce }}
+                </span>
+
+                <span>
+                    <i class="ph ph-map-pin"></i>
+
+                    {{ event.mistoKonnaniAkce }}
+                </span>
+
+                <span>
+                    <i class="ph ph-calendar"></i>
+
+                    {{ event.datumZacatkuAkce|date("j. n. Y", "Europe/Prague") }}
+
+                    {% if event.datumKonceAkce and event.datumZacatkuAkce|date("Ymd") != event.datumKonceAkce|date("Ymd") %}
+                        - {{ event.datumKonceAkce|date("j. n. Y", "Europe/Prague") }}
+                    {% endif %}
+                </span>
+
+                {% if not event.akciZobrazitBezCasu %}
+                    <span>
+                        <i class="ph ph-clock"></i>
+
+                        {{ event.datumZacatkuAkce|date("H:i", "Europe/Prague") }}
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endif %}

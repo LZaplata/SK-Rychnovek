@@ -1,0 +1,46 @@
+{% set images = __SELF__.images %}
+
+<div id="{{ __SELF__ }}" class="gallery row row-cols-2 mt-n4 row-cols-md-3">
+    {% for image in images %}
+        <a href="{{ image.path }}" title="{{ image.description }}" class="col g-4">
+            <img src="{{ image.path|resize(320, 180, { mode: 'crop' }) }}" alt="{{ image.title }}" class="img-fluid w-100">
+        </a>
+    {% endfor %}
+</div>
+
+{% if images.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li class="page-item prev">
+                <a href="{{ this.page.baseFileName|page({page: (images.currentPage-1)}) }}" class="page-link">
+                    &larr; Prev
+                </a>
+            </li>
+        {% endif %}
+
+        {% for page in 1..images.lastPage %}
+            <li class="page-item">
+                <a href="{{ this.page.baseFileName|page({page: page}) }}" class="{{ images.currentPage == page ? 'active' : null }}">
+                    {{ page }}
+                </a>
+            </li>
+        {% endfor %}
+
+        {% if images.lastPage > images.currentPage %}
+            <li class="page-item next">
+                <a href="{{ this.page.baseFileName|page({page: (images.currentPage+1)}) }}" class="page-link">
+                    Next &rarr;
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+{% put scripts %}
+    <script>
+        lightGallery(document.getElementById("{{ __SELF__ }}"), {
+            plugins: [lgZoom, lgThumbnail],
+            speed: 500,
+        });
+    </script>
+{% endput %}

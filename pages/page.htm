@@ -1,0 +1,82 @@
+url = "/:fullslug*"
+layout = "default"
+title = "Page"
+seoOptionsMetaTitle = "{{ page.title }}"
+
+[page]
+column = "fullslug"
+value = "{{ :fullslug }}"
+
+[Gallery gallery]
+imagesPerPage = 16
+
+[staticMenu leftmenu]
+
+[breadcrumbs]
+
+[collection faq]
+handle = "FAQ\Question"
+
+[events]
+page = "{{ :page }}"
+perPage = 10
+eventPage = "detail-akce-muzeum-krkonos"
+==
+<?php
+function onEnd()
+{
+    $code = $this["page"]->menu;
+
+    $this["leftmenu"]->resetMenu($code);
+}
+?>
+==
+<div class="container-fluid mt-4">
+    <div class="container-lg">
+        {% component "breadcrumbs" %}
+    </div>
+</div>
+
+<div class="container-fluid py-5 border-1 border-bottom border-light" id="page">
+    <div class="container-lg">
+        <div class="row g-5">
+            {% if leftmenu.menuItems is not null %}
+                <div class="sidebar d-none d-xl-block col-xl-3">
+                    {% component "leftmenu" %}
+                </div>
+            {% endif %}
+
+            <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
+                <h1 class="mb-4">
+                    {{ page.title }}
+                </h1>
+
+                <div class="contents d-flex flex-column gap-5">
+                    {% for content in page.contents %}
+                        <div class="content content-{{ content.type }} {{ content.title|slug }}">
+                            {% if content.heading %}
+                                <h2 class="mb-4">
+                                    {{ content.heading }}
+                                </h2>
+                            {% endif %}
+
+                            {% if content.type == "text" %}
+                                {{ content.text|raw|bootstrap }}
+                            {% elseif content.type == "gallery" %}
+                                {% component "gallery" gallery=content.gallery.slug %}
+                            {% elseif content.type == "faq" %}
+                                {% partial "_accordion/faq" items=faq %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    {% if page.id == "akce" %}
+                        <div class="content content-events">
+                            {% component "events" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+name: Pages
+modelClass: LZaplata\Pages\Models\Page
+form: $/lzaplata/pages/models/page/fields.yaml
+defaultRedirect: lzaplata/pages/pages
+create:
+    title: 'lzaplata.pages::lang.page.create.title'
+    redirect: 'lzaplata/pages/pages/update/:id'
+    redirectClose: lzaplata/pages/pages
+update:
+    title: 'lzaplata.pages::lang.page.update.title'
+    redirect: lzaplata/pages/pages
+    redirectClose: lzaplata/pages/pages
+customMessages:
+    flashCreate: 'lzaplata.pages::lang.page.create.flash'
+    flashUpdate: 'lzaplata.pages::lang.page.update.flash'
+    flashDelete: 'lzaplata.pages::lang.page.delete.flash'

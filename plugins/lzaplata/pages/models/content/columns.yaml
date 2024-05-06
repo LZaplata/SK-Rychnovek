@@ -1,0 +1,9 @@
+columns:
+    title:
+        label: 'lzaplata.pages::lang.content.column.title.label'
+        type: text
+        sortable: false
+    type:
+        label: 'lzaplata.pages::lang.content.column.type.label'
+        type: text
+        sortable: false

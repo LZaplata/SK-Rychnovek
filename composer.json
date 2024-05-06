@@ -1,0 +1,8 @@
+{
+    "name": "lzaplata/skrychnovek-theme",
+    "type": "october-theme",
+    "description": "Theme for netball team SK Rychnovek.",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

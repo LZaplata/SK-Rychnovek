@@ -1,0 +1,21 @@
+{% set events = __SELF__.events %}
+
+{% if events|length > 0 %}
+    <div class="events row row-cols-1 gap-5 gap-sm-4">
+        {% for event in events %}
+            {% set item = {
+                "title"             : event.nazevAkce,
+                "image"             : event.letakAkceSmall,
+                "excerpt"           : event.TextAkce,
+                "place"             : event.mistoKonnaniAkce,
+                "start"             : event.datumZacatkuAkce,
+                "end"               : event.datumKonceAkce,
+                "startWithoutTime"  : event.akciZobrazitBezCasu,
+                "category"          : event.kategorieAkce,
+                "url"               : event.url,
+            } %}
+
+            {% partial "_post/row-event" item=item image=item.image %}
+        {% endfor %}
+    </div>
+{% endif %}

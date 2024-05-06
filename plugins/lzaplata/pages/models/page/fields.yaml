@@ -1,0 +1,71 @@
+fields:
+    title:
+        label: 'lzaplata.pages::lang.page.field.title.label'
+        span: left
+        required: 1
+        type: text
+    slug:
+        label: 'lzaplata.pages::lang.page.field.slug.label'
+        span: right
+        required: 1
+        defaultFrom: title
+        preset:
+            field: title
+            type: slug
+        type: text
+    parent:
+        label: 'lzaplata.pages::lang.page.field.parent.label'
+        nameFrom: title
+        emptyOption: 'lzaplata.pages::lang.page.field.parent.prompt'
+        span: left
+        type: relation
+        permissions: lzaplata.pages.page.reorder
+    fullslug:
+        label: 'lzaplata.pages::lang.page.field.fullslug.label'
+        span: auto
+        type: text
+        required: 1
+        permissions: lzaplata.pages.page.reorder
+        defaultFrom: title
+        dependsOn:
+            - parent
+            - title
+            - slug
+    menu:
+        label: 'lzaplata.pages::lang.page.field.menu.label'
+        span: left
+        type: dropdown
+        dependsOn:
+            - parent
+        permissions: lzaplata.pages.page.reorder
+        emptyOption: 'lzaplata.pages::lang.page.field.menu.prompt'
+    breadcrumb:
+        label: 'lzaplata.pages::lang.page.field.breadcrumb.label'
+        type: dropdown
+        span: left
+        options:
+            auto: 'lzaplata.pages::lang.page.field.breadcrumb.option.auto'
+            manual: 'lzaplata.pages::lang.page.field.breadcrumb.option.manual'
+        permissions: lzaplata.pages.page.reorder
+        value: auto
+    breadcrumb_url:
+        label: "\_"
+        span: right
+        trigger:
+            action: show
+            field: breadcrumb
+            condition: value[manual]
+        type: pagefinder
+    sort_order:
+        label: 'lzaplata.pages::lang.page.field.sort_order.label'
+        span: left
+        type: number
+        dependsOn:
+            - parent
+            - title
+        permissions: lzaplata.pages.page.reorder
+        required: 1
+    contents:
+        type: partial
+        path: $/lzaplata/pages/models/page/_contents.htm
+        permissions: lzaplata.pages.content

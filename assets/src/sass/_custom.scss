@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$enable-negative-margins:               true;
+
+$min-contrast-ratio:                    2.5;
+
+$black:                                 #000000;
+$white:                                 #FFFFFF;
+
+$red-500:                               #dc3545;
+$red-100:                               #F2C7C9;
+
+$orange:                                #c06e34;
+
+$green-500:                             #419468;
+$green-700:                             #0c3725;
+
+$gray-500:                              #707070;
+$gray-300:                              #b2b2b2;
+$gray-200:                              #E5E4E6;
+$gray-100:                              #f4f4f4;
+
+$brown:                                 #230701;
+$brown-300:                             #867773;
+$brown-200:                             #F7E4D9;
+$brown-100:                             #EDEBEA;
+
+$blue-500:                              #2e4588;
+$blue-300:                              #00aeef;
+$blue-100:                              #e8f4f7;
+
+$yellow-500:                            #f9e326;
+
+$primary:                               $blue-300;
+$secondary:                             $yellow-500;
+$dark:                                  $gray-500;
+$light:                                 $white;
+$success:                               $green-500;
+$info:                                  $blue-300;
+
+$body-color:                            $black;
+
+$font-family-sans-serif:                "Nunito Sans", sans-serif;
+$font-family-serif:                     $font-family-sans-serif;
+$font-family-base:                      $font-family-sans-serif;
+$font-family-icons:                     "Phosphor";
+$font-family-icons-fill:                "Phosphor-fill";
+
+$font-weight-bold:                      700;
+$font-weight-semibold:                  600;
+$font-weight-medium:                    500;
+$font-weight-regular:                   400;
+
+$font-size-base:                        1rem;       // 16px
+$font-size-sm:                          .75rem;     // 12px
+
+$font-sizes: (
+    1:                                  5rem,           // 80px
+    2:                                  1.25rem,        // 20px
+    3:                                  1.125rem,       // 18px
+    4:                                  .9375rem,       // 15px
+    5:                                  0.875rem,       // 13px
+    6:                                  $font-size-sm,  // 12px
+);
+
+$spacer:                                1rem;
+$spacers: (
+    0:                                  0,
+    1:                                  $spacer * .25,
+    2:                                  $spacer * .5,
+    3:                                  $spacer,
+    4:                                  $spacer * 1.5,
+    5:                                  $spacer * 3,
+    6:                                  70px,
+    7:                                  100px,
+    8:                                  160px,
+);
+
+$line-height-base:                      1.5;
+
+$headings-font-family:                  $font-family-serif;
+$headings-font-weight:                  $font-weight-regular;
+$headings-color:                        $brown;
+
+$header-bg:                             transparent;
+$header-border-color:                   $gray-300;
+$header-border-width:                   1px;
+$header-position-absolute:              false;
+$header-position-absolute-only-hp:      true;
+
+$header-logo-sm-height:                 55px;           // auto for turn off - this value is relevant from breakpoint below (not included) down
+$header-logo-sm-height-breakpoint:      "xxl";          // sm, md, lg, xl, xxl
+
+$header-socials-icon-color:             $black;
+$header-socials-icon-hover-color:       $primary;
+$header-socials-icon-font-size:         map-get($font-sizes, 2);
+
+$header-phone-font-size:                map-get($font-sizes, 5);
+$header-phone-font-weight:              $font-weight-bold;
+$header-phone-link-color:               $black;
+$header-phone-link-hover-color:         $primary;
+$header-phone-icon-color:               $black;
+
+$header-search-link-color:              $black;
+$header-search-link-hover-color:        $primary;
+$header-search-link-font-size:          map-get($font-sizes, 2);
+
+$header-sitepicker-nav-link-color:      $black;
+$header-sitepicker-nav-link-font-size:  map-get($font-sizes, 4);
+
+$header-sitepicker-toggler-font-size:   $font-size-sm;
+
+$header-sitepicker-nav-level-1-bg:                  $white;
+$header-sitepicker-nav-level-1-max-height:          400px;
+$header-sitepicker-nav-level-1-padding-x:           0;
+$header-sitepicker-nav-level-1-padding-y:           10px;
+$header-sitepicker-nav-level-1-link-color:          $black;
+$header-sitepicker-nav-level-1-link-hover-color:    $gray-500;
+$header-sitepicker-nav-level-1-link-font-size:      $header-sitepicker-nav-link-font-size;
+$header-sitepicker-nav-level-1-link-padding-x:      15px;
+$header-sitepicker-nav-level-1-link-padding-y:      5px;
+
+$h1-font-size:                          2.5rem;             // 40px
+$h2-font-size:                          2rem;               // 32px
+$h3-font-size:                          1.125rem;           // 18px
+
+$link-color:                            $primary;
+$link-hover-color:                      $black;
+
+$nav-item-bg:                           transparent;
+$nav-item-hover-bg:                     transparent;
+$nav-item-padding-x:                    0;
+
+$nav-link-color:                        $black;
+$nav-link-hover-color:                  $primary;
+$nav-link-after-height:                 0;        // 0 for turn off
+$nav-link-padding-x:                    0;
+$nav-link-padding-y:                    0;
+$nav-link-font-weight:                  $font-weight-bold;
+$nav-link-font-size:                    map-get($font-sizes, 5);
+$nav-link-gap:                          map-get($spacers, 5);
+$nav-link-text-uppercase:               true;
+$nav-link-submenu-toggler-color:        $black;
+$nav-link-submenu-toggler-font-size:    $font-size-sm;
+
+$nav-pills-link-active-color:           $primary;
+$nav-pills-link-active-bg:              transparent;
+
+$nav-level-1-bg:                        $gray-100;
+$nav-level-1-box-shadow:                0px 20px 20px rgba(34, 45, 50, 0.1);        // false for turn off
+$nav-level-1-max-height:                570px;
+$nav-level-1-min-width:                 false;      // false for fluid
+$nav-level-1-padding-x:                 0;
+$nav-level-1-padding-y:                 40px;
+$nav-level-1-link-font-size:            map-get($font-sizes, 4);
+$nav-level-1-link-font-weight:          $font-weight-regular;
+$nav-level-1-link-color:                $gray-500;
+$nav-level-1-link-hover-color:          $primary;
+$nav-level-1-link-hover-bg:             transparent;
+$nav-level-1-link-active-color:         $primary;
+$nav-level-1-link-active-bg:            transparent;
+$nav-level-1-link-padding-x:            0;
+$nav-level-1-link-padding-y:            3px;
+$nav-level-1-link-underline-height:     1px;        // 0 for turn off
+$nav-level-1-link-underline-color:      $nav-level-1-link-color;
+$nav-level-1-link-before-content:       "▪";        // none for turn off
+$nav-level-1-link-before-color:         $primary;
+$nav-level-1-link-before-margin-right:  8px;
+
+$nav-level-2-padding-x:                 0;
+$nav-level-2-padding-y:                 0;
+$nav-level-2-link-font-size:            map-get($font-sizes, 4);
+$nav-level-2-link-font-weight:          $font-weight-regular;
+$nav-level-2-link-color:                $gray-500;
+$nav-level-2-link-hover-color:          $primary;
+$nav-level-2-link-hover-bg:             transparent;
+$nav-level-2-link-active-color:         $primary;
+$nav-level-2-link-active-bg:            transparent;
+$nav-level-2-link-padding-x:            0;
+$nav-level-2-link-padding-y:            3px;
+$nav-level-2-link-after-height:         0;        // 0 for turn off
+
+$border-radius-lg:                      15px;
+$border-radius:                         10px;
+$border-radius-sm:                      8px;
+
+$card-border-width:                     0;
+$card-border-radius:                    $border-radius;
+
+$offcanvas-toggler-font-size:           $font-size-sm;
+$offcanvas-toggler-color:               $black;
+$offcanvas-toggler-icon-font-size:      $h2-font-size;
+$offcanvas-toggler-close-color:         $white;
+$offcanvas-bg-color:                    $primary;
+$offcanvas-socials-icon-color:          $white;
+$offcanvas-socials-link-color:          $white;
+
+$offcanvas-nav-link-color:              $white;
+$offcanvas-nav-link-font-size:          $h3-font-size;
+$offcanvas-nav-link-font-weight:        $font-weight-bold;
+
+$offcanvas-nav-level-1-link-color:          $offcanvas-nav-link-color;
+$offcanvas-nav-level-1-link-font-size:      map-get($font-sizes, 4);
+$offcanvas-nav-level-1-link-font-weight:    $font-weight-medium;
+$offcanvas-nav-level-1-icon-font-weight:    $font-size-sm;
+
+$slider-navigation-color:               $black;
+$slider-navigation-bg:                  $white;
+$slider-navigation-font-size:           map-get($font-sizes, 2);
+$slider-navigation-width:               40px;
+$slider-navigation-height:              $slider-navigation-width;
+$slider-navigation-sides-offset:        40px;
+$slider-navigation-hover-color:         $white;
+$slider-navigation-hover-bg:            $primary;
+$slider-navigation-border-width:        1px;    // 0 for turn off
+$slider-navigation-border-color:        $primary;
+
+$slider-pagination-bg:                  $white;
+$slider-pagination-inactive-bg:         $white;
+$slider-pagination-width:               40px;
+$slider-pagination-inactive-width:      20px;
+$slider-pagination-height:              5px;
+$slider-pagination-border-radius:       10px;
+
+$btn-border-radius:                     0;
+//$btn-border-width:                      1.5px;
+$btn-font-weight:                       $font-weight-regular;
+$btn-font-size:                         map-get($font-sizes, 2);
+$btn-padding-x:                         40px;
+$btn-padding-y:                         16px;
+//$btn-padding-x-sm:                      20px;
+//$btn-padding-y-sm:                      10px;
+
+$dropdown-bg:                           $white;
+$dropdown-border-color:                 $gray-300;
+//$dropdown-border-width:                 $btn-border-width;
+$dropdown-color:                        $black;
+$dropdown-font-size:                    $btn-font-size;
+$dropdown-min-width:                    100%;
+//$dropdown-item-padding-x:               $btn-padding-x;
+$dropdown-item-padding-y:               7px;
+$dropdown-link-active-bg:               $gray-200;
+$dropdown-link-active-color:            $black;
+
+$badge-font-size:                       $font-size-sm;
+$badge-font-weight:                     $font-weight-semibold;
+$badge-padding-x:                       10px;
+$badge-padding-y:                       6px;
+$badge-border-radius:                   30px;
+
+$footer-font-size:                      map-get($font-sizes, 5);
+$footer-color:                          $black;
+$footer-bg:                             $blue-100;
+
+$footer-logo-bg:                        $black;
+$footer-logo-hover-bg:                  $primary;
+
+$footer-contact-font-size:              map-get($font-sizes, 5);
+$footer-contact-link-color:             $primary;
+$footer-contact-link-hover-color:       $brown-300;
+$footer-contact-link-underline-height:  1px;        // 0 for turn off
+$footer-contact-link-underline-color:   $footer-contact-link-color;
+$footer-contact-phone-font-size:        $footer-contact-font-size;
+$footer-contact-email-font-size:        $footer-contact-phone-font-size;
+
+$footer-toggler-color:                  $primary;
+
+$footer-bottom-bg:                      $footer-bg;
+$footer-bottom-font-size:               $footer-font-size;
+$footer-bottom-color:                   $gray-300;
+$footer-bottom-border-color:            $gray-300;
+
+$footer-socials-icon-color:             $primary;
+$footer-socials-icon-hover-color:       $gray-500;
+$footer-socials-link-color:             $gray-300;
+$footer-socials-link-hover-color:       $primary;
+$footer-socials-link-font-size:         $h2-font-size;
+
+$footer-signature-color:                $footer-socials-link-color;
+$footer-signature-hover-color:          $footer-socials-link-hover-color;
+
+$footer-nav-link-color:                 $primary;
+$footer-nav-link-font-weight:           $font-weight-regular;
+$footer-nav-link-font-size:             $footer-font-size;
+$footer-nav-link-hover-color:           $footer-contact-link-hover-color;
+$footer-nav-link-underline-height:      1px;        // 0 for turn off
+$footer-nav-link-underline-color:       $footer-nav-link-color;
+$footer-nav-link-before-content:        "\ed1c";    // none for turn off
+$footer-nav-link-before-color:          $brown-300;
+$footer-nav-link-before-top:            7px;
+$footer-nav-link-before-font-size:      5px;
+$footer-nav-link-before-font-family:    $font-family-icons-fill;
+
+$footer-heading-color:                  $black;
+$footer-heading-font-weight:            $font-weight-bold;
+$footer-heading-font-size:              $font-size-base;
+$footer-heading-font-family:            $font-family-base;
+
+$footer-column-border-color:            $brown-300;     // transparent for turn off - this value is relevant from breakpoint below (not included) down
+$footer-column-border-breakpoint:       "sm";           // sm, md, lg, xl, xxl
+
+$post-card-image-overlay-bg:                rgba($white, .5);
+$post-card-image-overlay-icon-font-size:    3rem;
+$post-card-title-font-size:                 $h3-font-size;
+$post-card-title-font-weight:               $font-weight-medium;
+$post-card-title-underline-color:           transparent;
+$post-card-hover-title-underline-color:     $primary;
+
+$post-row-image-overlay-bg:                 $post-card-image-overlay-bg;
+$post-row-image-overlay-icon-font-size:     $post-card-image-overlay-icon-font-size;
+$post-row-title-font-size:                  map-get($font-sizes, 2);
+$post-row-title-font-weight:                $font-weight-bold;
+$post-row-title-underline-color:            $post-card-title-underline-color;
+$post-row-hover-title-underline-color:      $post-card-hover-title-underline-color;
+$post-row-excerpt-color:                    $gray-500;
+
+$post-font-weight-bold:                 $font-weight-bold;
+
+$map-card-header-bg:                    $white;
+$map-card-footer-bg:                    $white;
+
+$sidebar-nav-bg:                        $gray-300;
+$sidebar-nav-padding-x:                 20px;
+$sidebar-nav-padding-y:                 5px;
+
+$sidebar-nav-item-border-width:         1px;        // 0 for turn off
+$sidebar-nav-item-border-color:         $gray-200;
+$sidebar-nav-item-before-content:       "\ea00";    // none for turn off
+$sidebar-nav-item-before-font-family:   $font-family-icons;
+$sidebar-nav-item-before-font-size:     $font-size-sm;
+$sidebar-nav-item-before-color:         $primary;
+$sidebar-nav-item-after-content:        none;       // none for turn off
+$sidebar-nav-item-after-font-family:    $font-family-icons;
+$sidebar-nav-item-after-font-size:      $font-size-sm;
+$sidebar-nav-item-after-color:          $primary;
+
+$sidebar-nav-item-active-before-content:    none;       // none for turn off
+$sidebar-nav-item-active-after-content:     "\ea00";    // none for turn off
+
+$sidebar-nav-link-color:                $gray-500;
+$sidebar-nav-link-font-size:            $font-size-base;
+$sidebar-nav-link-font-weight:          $font-weight-regular;
+$sidebar-nav-link-underline-color:      $sidebar-nav-link-color;
+$sidebar-nav-link-padding-x:            0;
+$sidebar-nav-link-padding-y:            10px;
+
+$sidebar-nav-link-hover-color:          $primary;
+
+$sidebar-nav-link-active-color:             $primary;
+$sidebar-nav-link-active-font-weight:       $font-weight-medium;
+$sidebar-nav-link-active-underline-color:   transparent;
+
+$table-border-color:                    $gray-500;
+$table-cell-padding-x:                  24px;
+$table-cell-padding-y:                  16px;
+$table-th-font-weight:                  $font-weight-bold;
+$table-color:                           $gray-500;
+
+$content-text-gap-base:                 1.5rem;
+$content-text-gap-lg:                   2.2rem;
+$content-text-gap-sm:                   1rem;
+$content-text-color:                    $gray-500;
+$content-text-strong-font-weight:       $font-weight-bold;
+
+$content-text-link-color:                   $primary;
+$content-text-link-font-weight:             $content-text-strong-font-weight;
+$content-text-link-underline-color:         $primary;
+$content-text-link-hover-color:             $gray-500;
+$content-text-link-hover-underline-color:   $gray-500;
+
+$content-text-table-head-bg:            transparent;
+$content-text-table-head-font-size:     $font-size-base;
+$content-text-table-body-font-size:     $font-size-base;
+
+$breadcrumb-margin-bottom:              0;
+$breadcrumb-divider:                    "-";
+$breadcrumb-divider-color:              $primary;
+$breadcrumb-font-size:                  $font-size-sm;
+$breadcrumb-font-weight:                $font-weight-medium;
+$breadcrumb-active-color:               $gray-500;
+$breadcrumb-link-color:                 $primary;
+$breadcrumb-link-underline-color:       $primary;
+$breadcrumb-link-hover-color:           $gray-500;
+$breadcrumb-link-hover-underline-color: $primary;
+$breadcrumb-home-link-font-size:        $h2-font-size;
+
+$accordion-button-color:                $primary;
+$accordion-button-padding-x:            0;
+$accordion-button-padding-y:            1rem;
+$accordion-button-active-bg:            transparent;
+$accordion-button-active-color:         $primary;
+$accordion-button-focus-border-color:   transparent;
+$accordion-button-focus-box-shadow:     none;
+$accordion-button-icon:                 url("../images/icons/plus.svg");
+$accordion-button-active-icon:          url("../images/icons/minus.svg");
+$accordion-border-width:                1px;
+$accordion-border-color:                $gray-300;
+$accordion-border-radius:               0;
+
+$faq-accordion-item-border-x:           0;
+$faq-accordion-button-font-size:        map-get($font-sizes, 2);
+$faq-accordion-button-font-weight:      $font-weight-medium;
+$faq-accordion-number-font-size:        map-get($font-sizes, 4);
+$faq-accordion-number-font-weight:      $font-weight-medium;
+$faq-accordion-number-color:            $primary;
+$faq-accordion-number-size:             40px;
+$faq-accordion-number-bg:               $gray-300;
+
+$quick-news-bg:                         $red-500;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+$custom-colors: (
+    "primary-300":                      $brown-300,
+    "primary-100":                      $brown-100,
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// 5. Include remainder of required parts
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/accordion";
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "font-family": (
+            property: font-family,
+            class: ff,
+            values: (
+                "primary": $font-family-sans-serif,
+                "secondary": $font-family-serif,
+            ),
+        ),
+        "transition": (
+            property: transition,
+            class: transition,
+            values: (
+                "base": $transition-base,
+            ),
+        )
+    )
+);
+
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "~bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+@mixin mask-image($image, $width: 24, $height: 24) {
+    mask-image: url("../images/#{$image}.svg");
+    -webkit-mask-image: url("../images/#{$image}.svg");
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    width: #{$width}px;
+    height: #{$height}px;
+    display: inline-block;
+}
+
+.mi {
+    &-facebook {
+        @include mask-image("icons/facebook", 12, 13);
+    }
+
+    &-instagram {
+        @include mask-image("icons/instagram", 12, 13);
+    }
+
+    &-youtube {
+        @include mask-image("icons/youtube");
+    }
+
+    &-logo {
+        @include mask-image("logo", 130, 40);
+    }
+
+    &-signature {
+        @include mask-image("signature", 85, 25);
+    }
+
+    &-12 {
+        width: 12px;
+        height: 12px;
+    }
+
+    &.link-primary {
+        background-color: $primary;
+        transition: $transition-base;
+
+        &:hover {
+            background-color: $black;
+        }
+    }
+}
+
+.btn {
+    &.btn-outline-light {
+        --bs-btn-color: #{$black};
+        --bs-btn-bg: transparent;
+        --bs-btn-border-color: #{$gray-300};
+        --bs-btn-hover-color: #{$black};
+        --bs-btn-hover-bg: #{$gray-300};
+        --bs-btn-hover-border-color: #{$gray-300};
+    }
+}

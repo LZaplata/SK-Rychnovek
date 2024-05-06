@@ -1,0 +1,57 @@
+<div class="post post-row event">
+    <div class="position-relative row">
+        {% if image %}
+            <p class="img mb-0 position-relative overflow-hidden col-12 col-sm-auto">
+                <a href="{{ item.url }}">
+                    <img src="{{ image }}" alt="{{ image.description }}" class="img-fluid w-100">
+
+                    <span class="overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                        <i class="ph ph-arrow-circle-up-right icon"></i>
+                    </span>
+                </a>
+            </p>
+        {% endif %}
+
+        <div class="col-12 mt-3 col-sm mt-sm-0">
+            <p class="mb-0 fs-5 d-flex flex-column gap-2 flex-md-row gap-md-4 text-dark">
+                <span class="text-primary">
+                    {{ item.category }}
+                </span>
+
+                <span>
+                    <i class="ph ph-map-pin"></i>
+
+                    {{ item.place }}
+                </span>
+
+                <span>
+                    <i class="ph ph-calendar"></i>
+
+                    {{ item.start|date("j. n. Y", "Europe/Prague") }}
+
+                    {% if item.end and item.start|date("Ymd") != item.end|date("Ymd") %}
+                        - {{ item.end|date("j. n. Y", "Europe/Prague") }}
+                    {% endif %}
+                </span>
+
+                {% if not item.startWithoutTime %}
+                    <span>
+                        <i class="ph ph-clock"></i>
+
+                        {{ item.start|date("H:i", "Europe/Prague") }}
+                    </span>
+                {% endif %}
+            </p>
+
+            <h3 class="title mb-0 mt-3 mt-md-2">
+                <a href="{{ item.url }}">
+                    {{ item.title }}
+                </a>
+            </h3>
+
+            <p class="excerpt mb-0 mt-2">
+                {{ item.excerpt }}
+            </p>
+        </div>
+    </div>
+</div>

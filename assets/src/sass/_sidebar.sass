@@ -1,0 +1,61 @@
+.sidebar
+    .nav
+        &.root
+            background-color: $sidebar-nav-bg
+            padding: $sidebar-nav-padding-y $sidebar-nav-padding-x
+
+            & > li
+                position: relative
+
+                &:not(:last-child)
+                    border-bottom-width: $sidebar-nav-item-border-width
+                    border-bottom-color: $sidebar-nav-item-border-color
+                    border-bottom-style: solid
+
+                &:before
+                    content: $sidebar-nav-item-before-content
+                    font-family: $sidebar-nav-item-before-font-family
+                    font-size: $sidebar-nav-item-before-font-size
+                    position: absolute
+                    left: -2px
+                    top: calc($sidebar-nav-link-padding-y + 3px)
+                    color: $sidebar-nav-item-before-color
+
+                &:after
+                    content: $sidebar-nav-item-after-content
+                    font-family: $sidebar-nav-item-after-font-family
+                    font-size: $sidebar-nav-item-after-font-size
+                    position: absolute
+                    right: -2px
+                    top: calc($sidebar-nav-link-padding-y + 3px)
+                    color: $sidebar-nav-item-after-color
+
+                &.active
+                    &:before
+                        content: $sidebar-nav-item-active-before-content
+
+                    &:after
+                        content: $sidebar-nav-item-active-after-content
+
+                & > a
+                    color: $sidebar-nav-link-color
+                    font-size: $sidebar-nav-link-font-size
+                    font-weight: $sidebar-nav-link-font-weight
+                    padding: $sidebar-nav-link-padding-y $sidebar-nav-link-padding-x
+                    text-decoration: underline
+                    text-decoration-color: $sidebar-nav-link-underline-color
+
+                    @if $sidebar-nav-item-before-content != none
+                        @if $sidebar-nav-link-padding-x == 0
+                            padding-left: 15px !important
+
+                    &:hover
+                        color: $sidebar-nav-link-hover-color
+
+                    &.active
+                        color: $sidebar-nav-link-active-color
+                        font-weight: $sidebar-nav-link-active-font-weight
+                        text-decoration-color: $sidebar-nav-link-active-underline-color
+
+                        @if $sidebar-nav-item-active-before-content == none
+                            padding-left: $sidebar-nav-link-padding-x !important

@@ -1,0 +1,162 @@
+url = "/"
+layout = "default"
+title = "Úvod"
+
+[collection slider]
+handle = "Slider\Slide"
+
+[global slider_settings]
+handle = "Slider\Settings"
+
+[collection partners]
+handle = "Partners\Partner"
+
+[collection portfolio_categories]
+handle = "Portfolio\Category"
+==
+{% if slider.getIterator().count %}
+    <div class="{#container-fluid#}"> {# uncomment while slider with horizontal margin #}
+        <div class="slider-swiper-wrapper position-relative {#container-fluid#}"> {# uncomment while slider with horizontal margin #}
+            {% partial "_swiper/slider" slides=slider settings=slider_settings %}
+
+            <div class="gradient position-absolute start-0 top-0 w-100 h-100"></div>
+
+            <div class="info position-absolute start-50 translate-middle-x py-4 px-5">
+                <p class="title fw-bold text-center text-white fs-1 mb-0">
+                    SK Rychnovek
+                </p>
+
+{#                <p class="heading h1 text-center mb-0 text-white">#}
+{#                    Nějaký popis#}
+{#                </p>#}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% component "quicknews" %}
+
+<div class="container-flush py-5" id="rezervace">
+    <div class="container-lg pt-xl-4">
+        <h2 class="h1 text-center mb-4">
+            Rezervace
+        </h2>
+
+        <p class="text-center mb-5">
+            Rezervace jsou povoleny jen pro registrované zákazníky. Pro vytvoření Vašeho účtu kontaktujte p. Jiřího
+            Kábrta na telefonním čísle <a href="tel: +420 724 618 420">724 618 420</a>.
+        </p>
+
+        <div class="reenio-iframe" data-size="auto"></div>
+
+        <script src="https://reenio.cz/cs/GE3DSOJX/widget-iframe.js" async defer></script>
+    </div>
+</div>
+
+<div class="container-fluid pt-5 pb-4 ps-md-0 pe-xl-0 overflow-hidden" id="o-nas">
+    <div class="container-fluid ps-md-0 pe-xl-0">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col d-flex col-md-5 col-xl pe-xl-0">
+                <img src="{{ 'assets/images/about.jpg'|theme }}" alt="O nás" class="img-fluid rounded-end-3 object-fit-md-cover">
+            </div>
+
+            <div class="col mt-4 col-md-7 mt-md-0 d-md-flex align-items-md-center col-xl ps-xl-0">
+                <div class="my-md-4 mx-xl-5 px-xxl-5">
+                    <h2 class="h1 pb-2 mb-3">
+                        SK Rychnovek
+                    </h2>
+
+                    <p>
+                        Naše společnost vznikla jakožto následníci firmy Kramár, která má v našem kraji dlouholetou
+                        tradici. Firma Kramár vznikla jako sdružení podnikatelů Františka Kramára, Milana Kramára a
+                        Františka Macháčka, na trhu působila od roku 1990, přičemž za celou dobu jejího působení
+                        realizovala celou škálu převážně rekonstruovaných střech počínaje menšími rodinnými domy, přes
+                        větší objekty jako jsou haly, nevyjímaje umělecké projekty, především kostelní věže.
+                    </p>
+
+                    <p>
+                        Společnost KP – Realizace Střech s.r.o. jsme založili my mladí následníci pro zachování rodinné
+                        tradice, ve které chceme dále pokračovat a vybudovat firmu s kvalitními službami a důslednou
+                        prací tak, jak tomu bylo doposud. Společnost jsme založili data 9.4.2013.
+                    </p>
+
+                    <ul class="list-unstyled mt-4 mb-0 fs-4 text-dark d-flex flex-column gap-2">
+                        <li class="d-flex align-items-center">
+                            <i class="ph ph-check-circle text-primary me-2 fs-2"></i>
+
+                            <p class="mb-0">
+                                <span class="fw-bold">
+                                    16m
+                                </span>
+
+                                vysokozdvižná plošina
+                            </p>
+                        </li>
+
+                        <li class="d-flex align-items-center">
+                            <i class="ph ph-check-circle text-primary me-2 fs-2"></i>
+
+                            <p class="mb-0">
+                                <span class="fw-bold">
+                                    6m
+                                </span>
+
+                                ohýbačka plechů až do 1mm
+                            </p>
+                        </li>
+
+                        <li class="d-flex align-items-center">
+                            <i class="ph ph-check-circle text-primary me-2 fs-2"></i>
+
+                            <p class="mb-0">
+                                <span class="fw-bold">
+                                    16m
+                                </span>
+
+                                výtahový žebřík
+                            </p>
+                        </li>
+
+                        <li class="d-flex align-items-center">
+                            <i class="ph ph-check-circle text-primary me-2 fs-2"></i>
+
+                            <p class="mb-0">
+                                <span class="fw-bold">
+                                    SCHLEBACH
+                                </span>
+
+                                profilovací stroj
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5" id="partners">
+    <div class="container-lg pt-xl-4">
+        <h2 class="h1 text-center mb-4">
+            Partneři
+        </h2>
+
+        <div class="swiper partners-swiper partners">
+            <div class="swiper-wrapper">
+                {% for partner in partners %}
+                    <div class="swiper-slide">
+                        {% if partner.link %}
+                            <a href="{{ partner.link }}" target="_blank">
+                        {% endif %}
+                                <img src="{{ partner.logo.path }}" alt="{{ partner.logo.description }}" class="img-fluid">
+                        {% if partner.link %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+{#            <div class="swiper-scrollbar"></div>#}
+        </div>
+    </div>
+</div>

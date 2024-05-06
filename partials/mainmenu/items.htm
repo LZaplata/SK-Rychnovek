@@ -1,0 +1,57 @@
+{% for item in items %}
+    {% if not item.viewBag.isHidden %}
+        <li role="presentation" class="nav-item d-inline-flex align-items-center level-{{ level }} {{ item.viewBag.cssClass }}">
+            {% if item.url %}
+                <a href="{% if item.url starts with '#' %}{{ 'homepage'|page }}/{% endif %}{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav-link position-relative {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }}">
+                    {{ item.title }}
+                </a>
+
+                {% if item.viewBag.isExternal %}
+                    <i class="ph ph-arrow-up-right ms-2 external-link-icon"></i>
+                {% endif %}
+            {% else %}
+                <span class="nav-link position-relative {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }}">
+                    {{ item.title }}
+                </span>
+            {% endif %}
+
+            {% if item.items and level < 2 %}
+                <i class="ph ph-caret-down ms-1 submenu-toggler"></i>
+
+                <div class="submenu">
+                    <div class="container-lg">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="h2">
+                                    {{ item.title }}
+                                </p>
+
+                                {% if item.code == "museums" and this.theme.museums_menu_text %}
+                                    <p class="mb-0">
+                                        {{ this.theme.museums_menu_text }}
+                                    </p>
+                                {% endif %}
+
+                                {% if item.code == "infocenters" and this.theme.infocenters_menu_text %}
+                                    <p class="mb-0">
+                                        {{ this.theme.infocenters_menu_text }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <ul class="nav flex-column align-self-center">
+                            {% partial __SELF__ ~ "::items" items=item.items level=2 %}
+                        </ul>
+
+                        <!-- Uncomment below while using fluid submenu and columns + comment above -->
+
+{#                        <ul class="nav row row-cols-lg-4 {{ item.code }}">#}
+{#                            {% partial __SELF__ ~ "::items-fluid" items=item.items level=2 %}#}
+{#                        </ul>#}
+                    </div>
+                </div>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}

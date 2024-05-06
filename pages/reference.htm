@@ -1,0 +1,149 @@
+url = "/reference/:slug"
+layout = "default"
+title = "Reference"
+
+[section reference_category]
+handle = "Portfolio\Category"
+identifier = "slug"
+value = "{{ :slug }}"
+
+[collection references]
+handle = "Portfolio\Reference"
+==
+{% if reference_category.banner_sm and reference_category.banner_lg %}
+    <div class="banner position-relative">
+        <picture>
+            <source media="(min-width:768px)" srcset="{{ reference_category.banner_lg.thumb(1920, 408, {"mode": "crop"}) }}">
+
+            <img src="{{ reference_category.banner_sm.thumb(750, 750, {"mode": "crop"}) }}" alt="{{ slide.image_sm.description }}" class="img-fluid w-100">
+        </picture>
+
+        <div class="gradient position-absolute start-0 top-0 w-100 h-100"></div>
+
+        <div class="info position-absolute start-50 translate-middle-x w-100">
+            <p class="heading h1 fs-1 text-center mb-0">
+                {{ reference_category.title }}
+            </p>
+        </div>
+    </div>
+{% endif %}
+
+<div class="container-fluid pt-6 pt-lg-7">
+    <div class="container-lg">
+        <div class="row g-5">
+            <div class="col-12 col-xl-8 d-xl-flex align-items-xl-center text-primary-300 fs-3">
+                {{ reference_category.description }}
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xxl-3 offset-xxl-1">
+                <div class="bg-primary p-4">
+                    <h2 class="mb-3 text-white">
+                        Kontaktujte nás
+                    </h2>
+
+                    <div class="d-flex flex-column gap-1">
+                        <p class="mb-0 d-flex align-items-center gap-2">
+                            <i class="ph ph-device-mobile fs-2 text-white"></i>
+
+                            <a href="tel:{{ this.theme.phone }}" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover transition-base">
+                                {{ this.theme.phone }}
+                            </a>
+                        </p>
+
+                        <p class="mb-0 d-flex align-items-center gap-2">
+                            <i class="ph ph-envelope-simple fs-2 text-white"></i>
+
+                            <a href="mailto:{{ this.theme.email }}" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover transition-base">
+                                {{ this.theme.email }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-6 pt-lg-7 pt-xxl-8">
+    <div class="container-lg">
+        <div class="portfolio-references d-flex flex-column gap-6 gap-lg-7 gap-xxl-8">
+            {% for reference in references.whereRelation("categories", "slug", reference_category.slug).get() %}
+                <div class="row row-cols-1 row-cols-lg-2 g-lg-5 g-xl-6 g-xxl-8">
+                    <div class="reference col">
+                        <div class="images row row-cols-2 g-3 row-cols-xxl-3" id="reference-images">
+                            {% for image in reference.images %}
+                                <div class="image {{ loop.first ? 'col-12 col-xxl-12' : 'col' }} {{ loop.index > 3 ? 'd-none d-xxl-flex' }} {{ loop.index > 4 ? 'd-xxl-none' }}">
+                                    <div class="position-relative">
+                                        <img src="{{ image.thumb(520, 290, {'mode': 'crop'}) }}" alt="{{ image.description }}" class="img-fluid w-100">
+
+                                        {% if loop.index == 3 %}
+                                            <div class="more position-absolute start-0 w-100 top-0 h-100 d-flex align-items-center justify-content-center text-white d-xxl-none">
+                                                <p class="mb-0 d-flex align-items-baseline gap-1">
+                                                    <span class="fs-3">
+                                                        + {{ loop.length - 3 }}
+                                                    </span>
+
+                                                    <span class="fs-4">
+                                                        {{ "[1,4] další|[5,*] dalších"|trans_choice(loop.length - 3) }}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if loop.index == 4 %}
+                                            <div class="more position-absolute start-0 w-100 top-0 h-100 text-white d-none d-xxl-flex align-items-center justify-content-center">
+                                                <p class="mb-0 d-flex align-items-baseline gap-1">
+                                                    <span class="fs-3">
+                                                        + {{ loop.length - 4 }}
+                                                    </span>
+
+                                                    <span class="fs-4">
+                                                        {{ "[1,4] další|[5,*] dalších"|trans_choice(loop.length - 4) }}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        {% endif %}
+
+                                        <a href="{{ image.path }}" class="image-link position-absolute start-0 w-100 top-0 h-100" data-external-thumb-image="{{ image.path }}"></a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col mt-4 pt-2 mt-lg-5 pt-lg-0 mt-xl-6 mt-xxl-8 d-flex align-items-center">
+                        <div>
+                            <h2 class="mb-4">
+                                {{ reference.title }}
+                            </h2>
+
+                            <div class="mb-3 d-flex flex-column gap-1">
+                                <p class="mb-0 d-flex align-items-center gap-2">
+                                    <i class="ph ph-calendar-check text-primary fs-2"></i>
+
+                                    <span class="fs-4">
+                                        {{ reference.date_from|date("n / Y") }}{% if reference.date_to %} - {{ reference.date_to|date("n / Y") }}{% endif %}
+                                    </span>
+                                </p>
+
+                                <p class="mb-0 d-flex align-items-center gap-2">
+                                    <i class="ph ph-map-pin text-primary fs-2"></i>
+
+                                    <span class="fs-4">
+                                        {{ reference.place }}
+                                    </span>
+                                </p>
+                            </div>
+
+                            <div class="description fs-3 text-primary-300">
+                                {{ reference.description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% partial "contact" %}

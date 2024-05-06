@@ -1,0 +1,37 @@
+<div class="post post-row">
+    <div class="position-relative row">
+        {% if image %}
+            <p class="img mb-0 position-relative overflow-hidden col-12 col-sm-auto">
+                <a href="{{ item.url }}">
+                    {% if image.path %}
+                        <img src="{{ image.thumb(600, 400, {"mode": "crop"}) }}" alt="{{ image.description }}" class="img-fluid w-100">
+                    {% else %}
+                        <img src="{{ image|media }}" alt="{{ image.description }}" class="img-fluid w-100">
+                    {% endif %}
+
+                    <span class="overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                        <i class="ph ph-arrow-circle-up-right icon"></i>
+                    </span>
+                </a>
+            </p>
+        {% endif %}
+
+    {#    <p class="date fs-13 mb-0 mt-3 d-flex align-items-center">#}
+    {#        <img src="{{ 'assets/images/icons/calendar-blank.svg'|theme }}" alt="calendar" class="me-2 opacity-55">#}
+
+    {#        {{ post.published_at|date("j. n. Y") }}#}
+    {#    </p>#}
+
+        <div class="col-12 mt-3 col-sm mt-sm-0">
+            <h3 class="title mb-0">
+                <a href="{{ item.url }}">
+                    {{ item.title }}
+                </a>
+            </h3>
+
+{#            <p class="excerpt mb-0 mt-2">#}
+{#                {{ item.excerpt }}#}
+{#            </p>#}
+        </div>
+    </div>
+</div>

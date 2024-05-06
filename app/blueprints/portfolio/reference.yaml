@@ -1,0 +1,59 @@
+uuid: lzaplata_portfolio_references
+handle: Portfolio\Reference
+type: structure
+name: Reference
+drafts: false
+
+structure:
+    maxDepth: 1
+
+primaryNavigation:
+    label: Portfolio
+    icon: icon-handshake-o
+    order: 140
+
+navigation:
+    icon: icon-list
+    parent: Portfolio\Reference
+    order: 10
+
+fields:
+    date_from:
+        label: Datum realizace OD
+        span: left
+        type: datepicker
+        mode: date
+        firstDay: 1
+        required: true
+        validation: required
+        column:
+            format: j. n. Y
+    date_to:
+        label: Datum realizace DO
+        span: right
+        type: datepicker
+        mode: date
+        firstDay: 1
+        column:
+            format: j. n. Y
+    place:
+        label: Místo
+        span: left
+        type: text
+        required: true
+        validation: required
+    categories:
+        label: Kategorie
+        span: right
+        type: entries
+        maxItems: 1
+        source: Portfolio\Category
+        displayMode: relation
+    description:
+        label: Popis
+        type: textarea
+        size: large
+    images:
+        label: Obrázky
+        type: fileupload
+        fileTypes: png,jpg,jpeg,webp
