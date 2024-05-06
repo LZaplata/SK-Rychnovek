@@ -1,0 +1,93 @@
+uuid: lzaplata_cups_match
+handle: Cups\Match
+type: stream
+name: Zápas
+showExport: false
+showImport: false
+
+navigation:
+    icon: icon-soccer-ball-o
+    label: Zápasy
+    parent: Cups\Cup
+    order: 50
+
+fields:
+    date:
+        label: Datum
+        span: left
+        type: datepicker
+
+    cup:
+        label: Ročník
+        span: left
+        type: entries
+        source: Cups\Cup
+        maxItems: 1
+        displayMode: relation
+
+    is_group:
+        label: Skupinový zápas
+        span: left
+        type: switch
+        default: true
+        column: false
+
+    group:
+        label: Skupina
+        span: left
+        type: entries
+        source: Cups\Group
+        maxItems: 1
+        displayMode: relation
+        trigger:
+            action: show
+            field: is_group
+            condition: checked
+        column: false
+
+    playoff:
+        label: Playoff
+        span: left
+        type: entries
+        source: Cups\Playoff
+        maxItems: 1
+        displayMode: relation
+        trigger:
+            action: show
+            field: is_group
+            condition: unchecked
+        column: false
+
+    home_team:
+        label: Domácí
+        span: left
+        type: entries
+        source: Cups\Team
+        maxItems: 1
+        displayMode: relation
+        column: false
+
+    away_team:
+        label: Hosté
+        span: right
+        type: entries
+        source: Cups\Team
+        maxItems: 1
+        displayMode: relation
+        column: false
+
+    home_score:
+        label: Skóre domácí
+        span: left
+        type: number
+        min: 0
+        column: false
+        scope: false
+
+    away_score:
+        label: Skóre hosté
+        span: right
+        type: number
+        min: 0
+        column: false
+        scope: false

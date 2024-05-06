@@ -1,0 +1,12 @@
+uuid: lzaplata_cups_team
+handle: Cups\Team
+type: stream
+name: Tým
+showExport: false
+showImport: false
+
+navigation:
+    icon: icon-users
+    label: Týmy
+    parent: Cups\Cup
+    order: 40

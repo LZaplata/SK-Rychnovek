@@ -1,0 +1,12 @@
+uuid: lzaplata_cups_group
+handle: Cups\Group
+type: stream
+name: Skupina
+showImport: false
+showExport: false
+
+navigation:
+    icon: icon-list-ol
+    label: Skupiny
+    parent: Cups\Cup
+    order: 20

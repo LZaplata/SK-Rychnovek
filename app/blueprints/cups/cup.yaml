@@ -1,0 +1,60 @@
+uuid: lzaplata_cups_cup
+handle: Cups\Cup
+type: stream
+name: Ročník
+showImport: false
+showExport: false
+
+primaryNavigation:
+    label: Poháry
+    icon: icon-trophy
+    order: 130
+
+navigation:
+    icon: icon-calendar-o
+    label: "Ročníky"
+    parent: Cups\Cup
+    order: 10
+
+fields:
+    structure:
+        label: Formát
+        type: repeater
+        prompt: Přidat fázi
+        itemsExpanded: false
+        form:
+            fields:
+                stage:
+                    label: Fáze
+                    type: dropdown
+                    options:
+                        groups: Skupiny
+                        playoff: Playoff
+
+                groups:
+                    label: Skupiny
+                    type: repeater
+                    prompt: Přidat skupinu
+                    itemsExpanded: false
+                    trigger:
+                        action: show
+                        field: stage
+                        condition: value[groups]
+                    form:
+                        fields:
+                            group:
+                                label: Skupiny
+                                type: entries
+                                source: Cups\Group
+                                maxItems: 1
+                                displayMode: relation
+
+                playoff:
+                    type: entries
+                    source: Cups\Playoff
+                    maxItems: 1
+                    displayMode: relation
+                    trigger:
+                        action: show
+                        field: stage
+                        condition: value[playoff]

@@ -1,0 +1,12 @@
+uuid: lzaplata_cups_playoff
+handle: Cups\Playoff
+type: stream
+name: Playoff
+showExport: false
+showImport: false
+
+navigation:
+    icon: icon-sitemap
+    label: Playoff
+    parent: Cups\Cup
+    order: 30
