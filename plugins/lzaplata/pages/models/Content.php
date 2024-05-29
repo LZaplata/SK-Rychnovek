@@ -68,6 +68,9 @@ class Content extends Model
         return Category::pluck("name", "slug")->all();
     }
 
+    /**
+     * @var array
+     */
     public $belongsTo = [
         "gallery"           => Gallery::class,
     ];
