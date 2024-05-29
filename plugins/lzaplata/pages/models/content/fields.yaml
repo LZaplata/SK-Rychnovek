@@ -28,6 +28,11 @@ fields:
         type: richeditor
     blog_categories:
         label: 'lzaplata.pages::lang.content.field.blog_categories.label'
+        span: left
+        trigger:
+            action: show
+            field: type
+            condition: 'value[blog]'
     gallery:
         label: 'lzaplata.pages::lang.content.field.gallery.label'
         nameFrom: name
