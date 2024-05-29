@@ -17,23 +17,47 @@ imagesPerPage = 16
 [collection faq]
 handle = "FAQ\Question"
 
-[events]
-page = "{{ :page }}"
-perPage = 10
-eventPage = "detail-akce-muzeum-krkonos"
+[cookiesManage cookiesmanage]
+
+[blogPosts posts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "Nenalezeny žádné příspěvky"
+sortOrder = "published_at asc"
+categoryPage = "page"
+postPage = "page-post"
 ==
 <?php
 function onEnd()
 {
     $code = $this["page"]->menu;
+    $contents = $this["page"]->contents;
 
     $this["leftmenu"]->resetMenu($code);
+
+    if (!is_null($contents)) {
+        foreach ($contents as $content) {
+            if ($content->type == "blog") {
+                $posts = $this->page->components["posts"];
+                $posts->setProperty("categoryFilter", $content->blog_categories);
+                $posts->onRun();
+            }
+        }
+    }
 }
 ?>
 ==
 <div class="container-fluid mt-4">
     <div class="container-lg">
-        {% component "breadcrumbs" %}
+        <div class="row g-5">
+            {% if leftmenu.menuItems is not null %}
+                <div class="d-none d-xl-block col-xl-3"></div>
+            {% endif %}
+
+            <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
+                {% component "breadcrumbs" %}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -62,19 +86,19 @@ function onEnd()
 
                             {% if content.type == "text" %}
                                 {{ content.text|raw|bootstrap }}
+                            {% elseif content.type == "blog" %}
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 {% if leftmenu.menuItems is null %}row-cols-xl-4{% endif %}">
+                                    {% component "posts" %}
+                                </div>
                             {% elseif content.type == "gallery" %}
                                 {% component "gallery" gallery=content.gallery.slug %}
                             {% elseif content.type == "faq" %}
                                 {% partial "_accordion/faq" items=faq %}
+                            {% elseif content.type == "cookies" %}
+                                {% component "cookiesmanage" %}
                             {% endif %}
                         </div>
                     {% endfor %}
-
-                    {% if page.id == "akce" %}
-                        <div class="content content-events">
-                            {% component "events" %}
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         </div>

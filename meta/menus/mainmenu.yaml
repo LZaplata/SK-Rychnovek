@@ -14,26 +14,14 @@ items:
             isExternal: '0'
     -
         title: Sporty
-        type: cms-page
+        type: page
         code: ''
-        reference: sporty
+        reference: '2'
+        cmsPage: page
         viewBag:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
-        items:
-            -
-                title: Tenis
-                nesting: 0
-                type: blog-category
-                code: ''
-                reference: '2'
-                cmsPage: novinky-kategorie
-                replace: 0
-                viewBag:
-                    isHidden: '0'
-                    cssClass: ''
-                    isExternal: '0'
     -
         title: Rezervace
         nesting: null

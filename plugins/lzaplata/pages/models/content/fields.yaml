@@ -16,7 +16,7 @@ fields:
         trigger:
             action: show
             field: type
-            condition: 'value[text][gallery][faq]'
+            condition: 'value[text][gallery][faq][cookies]'
     text:
         label: 'lzaplata.pages::lang.content.field.text.label'
         size: giant

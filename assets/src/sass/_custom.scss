@@ -92,7 +92,7 @@ $header-border-width:                   1px;
 $header-position-absolute:              false;
 $header-position-absolute-only-hp:      true;
 
-$header-logo-sm-height:                 55px;           // auto for turn off - this value is relevant from breakpoint below (not included) down
+$header-logo-sm-height:                 auto;           // auto for turn off - this value is relevant from breakpoint below (not included) down
 $header-logo-sm-height-breakpoint:      "xxl";          // sm, md, lg, xl, xxl
 
 $header-socials-icon-color:             $black;
@@ -308,6 +308,7 @@ $post-card-image-overlay-icon-font-size:    3rem;
 $post-card-title-font-size:                 $h3-font-size;
 $post-card-title-font-weight:               $font-weight-medium;
 $post-card-title-underline-color:           transparent;
+$post-card-hover-title-color:               $primary;
 $post-card-hover-title-underline-color:     $primary;
 
 $post-row-image-overlay-bg:                 $post-card-image-overlay-bg;
@@ -323,7 +324,7 @@ $post-font-weight-bold:                 $font-weight-bold;
 $map-card-header-bg:                    $white;
 $map-card-footer-bg:                    $white;
 
-$sidebar-nav-bg:                        $gray-300;
+$sidebar-nav-bg:                        $gray-100;
 $sidebar-nav-padding-x:                 20px;
 $sidebar-nav-padding-y:                 5px;
 
@@ -344,7 +345,7 @@ $sidebar-nav-item-active-after-content:     "\ea00";    // none for turn off
 $sidebar-nav-link-color:                $gray-500;
 $sidebar-nav-link-font-size:            $font-size-base;
 $sidebar-nav-link-font-weight:          $font-weight-regular;
-$sidebar-nav-link-underline-color:      $sidebar-nav-link-color;
+$sidebar-nav-link-underline-color:      transparent;
 $sidebar-nav-link-padding-x:            0;
 $sidebar-nav-link-padding-y:            10px;
 
@@ -383,10 +384,10 @@ $breadcrumb-font-size:                  $font-size-sm;
 $breadcrumb-font-weight:                $font-weight-medium;
 $breadcrumb-active-color:               $gray-500;
 $breadcrumb-link-color:                 $primary;
-$breadcrumb-link-underline-color:       $primary;
+$breadcrumb-link-underline-color:       transparent;
 $breadcrumb-link-hover-color:           $gray-500;
-$breadcrumb-link-hover-underline-color: $primary;
-$breadcrumb-home-link-font-size:        $h2-font-size;
+$breadcrumb-link-hover-underline-color: $gray-500;
+$breadcrumb-home-link-font-size:        map-get($font-sizes, 2);
 
 $accordion-button-color:                $primary;
 $accordion-button-padding-x:            0;

@@ -1,0 +1,9 @@
+{% set posts = __SELF__.posts %}
+
+{% for post in posts %}
+    {% set image = post.featured_images.first %}
+
+    <div class="col position-relative">
+        {% partial "_post/card" item=post image=image loop=loop %}
+    </div>
+{% endfor %}

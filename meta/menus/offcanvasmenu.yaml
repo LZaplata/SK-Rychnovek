@@ -14,9 +14,13 @@ items:
             isExternal: '0'
     -
         title: Sporty
-        type: cms-page
+        nesting: null
+        type: header
+        url: null
         code: ''
-        reference: sporty
+        reference: null
+        cmsPage: null
+        replace: null
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -24,12 +28,43 @@ items:
         items:
             -
                 title: Tenis
-                nesting: 0
-                type: blog-category
+                nesting: null
+                type: page
+                url: null
                 code: ''
                 reference: '2'
-                cmsPage: novinky-kategorie
-                replace: 0
+                cmsPage: page
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Hokej
+                type: page
+                code: ''
+                reference: '4'
+                cmsPage: page
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Nohejbal
+                type: page
+                code: ''
+                reference: '5'
+                cmsPage: page
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Volejbal
+                type: page
+                code: ''
+                reference: '6'
+                cmsPage: page
                 viewBag:
                     isHidden: '0'
                     cssClass: ''

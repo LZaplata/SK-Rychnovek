@@ -2,7 +2,7 @@
     {% if not item.viewBag.isHidden %}
         <li role="presentation" class="nav-item d-inline-flex align-items-center level-{{ level }} {{ item.viewBag.cssClass }}">
             {% if item.url %}
-                <a href="{% if item.url starts with '#' %}{{ 'homepage'|page }}/{% endif %}{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav-link position-relative {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }}">
+                <a href="{% if item.url starts with '#' %}{{ 'homepage'|page }}/{% endif %}{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav-link position-relative {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'active' : '' }} {{ item.url in url().current ? 'active' }}">
                     {{ item.title }}
                 </a>
 
@@ -15,7 +15,7 @@
                 </span>
             {% endif %}
 
-            {% if item.items and level < 2 %}
+            {% if item.items and level < 1 %}
                 <i class="ph ph-caret-down ms-1 submenu-toggler"></i>
 
                 <div class="submenu">

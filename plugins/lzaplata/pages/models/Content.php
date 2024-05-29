@@ -1,6 +1,7 @@
 <?php namespace LZaplata\Pages\Models;
 
 use Backend\Facades\BackendAuth;
+use JanVince\SmallGDPR\Models\CookiesSettings;
 use LZaplata\Gallery\Models\Gallery;
 use Model;
 use October\Rain\Exception\SystemException;
@@ -46,6 +47,10 @@ class Content extends Model
 
         if (BlueprintIndexer::instance()->findSectionByHandle("FAQ\Question")) {
             $types["faq"] = "FAQ";
+        }
+
+        if (class_exists(CookiesSettings::class)) {
+            $types["cookies"] = e(trans("lzaplata.pages::lang.content.field.type.option.cookies.label"));
         }
 
         return $types;

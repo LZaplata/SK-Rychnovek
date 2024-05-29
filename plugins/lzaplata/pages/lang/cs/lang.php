@@ -105,6 +105,9 @@
                     'gallery' => [
                         'label' => 'Galerie',
                     ],
+                    'cookies' => [
+                        'label' => 'Nastavení cookies',
+                    ],
                 ],
             ],
             'text' => [

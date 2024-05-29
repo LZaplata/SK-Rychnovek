@@ -1,0 +1,63 @@
+url = "/:fullslug*/clanek/:slug"
+layout = "default"
+title = "Page post"
+seoOptionsMetaTitle = "{{ page.title }}"
+
+[page]
+column = "fullslug"
+value = "{{ :fullslug }}"
+
+[staticMenu leftmenu]
+
+[breadcrumbs]
+
+[blogPost post]
+slug = "{{ :slug }}"
+categoryPage = "page"
+==
+<?php
+function onEnd()
+{
+    $code = $this["page"]->menu;
+
+    $this["leftmenu"]->resetMenu($code);
+}
+?>
+==
+<div class="container-fluid mt-4">
+    <div class="container-lg">
+        <div class="row g-5">
+            {% if leftmenu.menuItems is not null %}
+                <div class="d-none d-xl-block col-xl-3"></div>
+            {% endif %}
+
+            <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
+                {% component "breadcrumbs" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 border-1 border-bottom border-light" id="page">
+    <div class="container-lg">
+        <div class="row g-5">
+            {% if leftmenu.menuItems is not null %}
+                <div class="sidebar d-none d-xl-block col-xl-3">
+                    {% component "leftmenu" %}
+                </div>
+            {% endif %}
+
+            <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
+                <h1 class="mb-4">
+                    {{ post.title }}
+                </h1>
+
+                <div class="contents d-flex flex-column gap-5" id="post">
+                    <div class="content">
+                        {% component "post" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
