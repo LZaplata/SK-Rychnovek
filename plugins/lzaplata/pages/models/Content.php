@@ -4,9 +4,8 @@ use Backend\Facades\BackendAuth;
 use JanVince\SmallGDPR\Models\CookiesSettings;
 use LZaplata\Gallery\Models\Gallery;
 use Model;
-use October\Rain\Exception\SystemException;
+use RainLab\Blog\Models\Post;
 use Tailor\Classes\BlueprintIndexer;
-use Tailor\Models\EntryRecord;
 
 /**
  * Model
@@ -40,6 +39,10 @@ class Content extends Model
         $types = [
             "text"  => "Text",
         ];
+
+        if (class_exists(Post::class)) {
+            $types["blog"] = e(trans("lzaplata.pages::lang.content.field.type.option.blog.label"));
+        }
 
         if (class_exists(Gallery::class)) {
             $types["gallery"] = e(trans("lzaplata.pages::lang.content.field.type.option.gallery.label"));

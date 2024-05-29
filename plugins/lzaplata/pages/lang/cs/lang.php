@@ -102,6 +102,9 @@
             'type' => [
                 'label' => 'Typ',
                 'option' => [
+                    'blog' => [
+                        'label' => 'Blog',
+                    ],
                     'gallery' => [
                         'label' => 'Galerie',
                     ],
@@ -115,6 +118,9 @@
             ],
             'heading' => [
                 'label' => 'Nadpis',
+            ],
+            'blog_categories' => [
+                'label' => 'Kategorie',
             ],
             'gallery' => [
                 'label' => 'Galerie',

@@ -102,6 +102,9 @@
             'type' => [
                 'label' => 'Type',
                 'option' => [
+                    'blog' => [
+                        'label' => 'Blog',
+                    ],
                     'gallery' => [
                         'label' => 'Gallery',
                     ],
@@ -115,6 +118,9 @@
             ],
             'heading' => [
                 'label' => 'Heading',
+            ],
+            'blog_categories' => [
+                'label' => 'Categories',
             ],
             'gallery' => [
                 'label' => 'Gallery',

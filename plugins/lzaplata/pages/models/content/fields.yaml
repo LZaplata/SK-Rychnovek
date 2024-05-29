@@ -16,7 +16,7 @@ fields:
         trigger:
             action: show
             field: type
-            condition: 'value[text][gallery][faq][cookies]'
+            condition: 'value[text][blog][gallery][faq][cookies]'
     text:
         label: 'lzaplata.pages::lang.content.field.text.label'
         size: giant
@@ -26,6 +26,8 @@ fields:
             field: type
             condition: 'value[text]'
         type: richeditor
+    blog_categories:
+        label: 'lzaplata.pages::lang.content.field.blog_categories.label'
     gallery:
         label: 'lzaplata.pages::lang.content.field.gallery.label'
         nameFrom: name

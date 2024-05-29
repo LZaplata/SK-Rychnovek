@@ -30,6 +30,7 @@ class BuilderTablesCreate extends Migration
             $table->string('type', 10)->nullable(false)->default('text');
             $table->string('heading', 100)->nullable();
             $table->text('text')->nullable();
+            $table->string('blog_categories', 200)->nullable();
             $table->integer('gallery_id')->nullable()->unsigned();
             $table->integer('page_id')->nullable();
             $table->timestamp('created_at')->nullable();
