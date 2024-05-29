@@ -29,6 +29,10 @@ fields:
     blog_categories:
         label: 'lzaplata.pages::lang.content.field.blog_categories.label'
         span: left
+        type: taglist
+        options: true
+        customTags: false
+        useKey: true
         trigger:
             action: show
             field: type

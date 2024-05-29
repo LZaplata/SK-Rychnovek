@@ -4,6 +4,7 @@ use Backend\Facades\BackendAuth;
 use JanVince\SmallGDPR\Models\CookiesSettings;
 use LZaplata\Gallery\Models\Gallery;
 use Model;
+use RainLab\Blog\Models\Category;
 use RainLab\Blog\Models\Post;
 use Tailor\Classes\BlueprintIndexer;
 
@@ -59,8 +60,16 @@ class Content extends Model
         return $types;
     }
 
+    /**
+     * @return array
+     */
+    public function getBlogCategoriesOptions(): array
+    {
+        return Category::pluck("name", "slug")->all();
+    }
+
     public $belongsTo = [
-        "gallery" => Gallery::class,
+        "gallery"           => Gallery::class,
     ];
 
     /**
