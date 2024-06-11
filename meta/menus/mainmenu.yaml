@@ -3,7 +3,7 @@ items:
         title: 'MČR 2024'
         type: page
         code: cup
-        reference: '9'
+        reference: '10'
         cmsPage: page
         viewBag:
             isHidden: '0'
