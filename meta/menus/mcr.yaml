@@ -5,7 +5,7 @@ items:
         type: page
         url: null
         code: ''
-        reference: '9'
+        reference: '10'
         cmsPage: page
         replace: null
         viewBag:
@@ -16,7 +16,7 @@ items:
         title: Tabulky
         type: page
         code: ''
-        reference: '10'
+        reference: '11'
         cmsPage: page
         viewBag:
             isHidden: '0'
@@ -26,7 +26,7 @@ items:
         title: Propozice
         type: page
         code: ''
-        reference: '11'
+        reference: '12'
         cmsPage: page
         viewBag:
             isHidden: '0'
