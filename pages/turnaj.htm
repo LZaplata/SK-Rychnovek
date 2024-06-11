@@ -1,8 +1,15 @@
-url = "/turnaj/:slug?2024"
+url = "/mcr/tabulk/:slug?2024"
 layout = "default"
 title = "Turnaj"
 
+[page]
+column = "fullslug"
+value = "mcr/tabulky"
+
 [staticMenu leftmenu]
+code = "mcr"
+
+[breadcrumbs]
 
 [section cup]
 handle = "Cups\Cup"
@@ -11,12 +18,6 @@ value = "{{ :slug }}"
 
 [collection matches]
 handle = "Cups\Match"
-
-[collection slider]
-handle = "Slider\Slide"
-
-[global slider_settings]
-handle = "Slider\Settings"
 ==
 <?php
 use Tailor\Models\EntryRecord;
@@ -63,6 +64,18 @@ function onStart() {
 }
 ?>
 ==
+<div class="container-fluid mt-4">
+    <div class="container-lg">
+        <div class="row g-5">
+            <div class="d-none d-xl-block col-xl-3"></div>
+
+            <div class="col col-xl-9">
+                {% component "breadcrumbs" %}
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid py-5" id="page">
     <div class="container-lg">
         <div class="row g-5">
@@ -73,8 +86,8 @@ function onStart() {
             {% endif %}
 
             <div class="col {% if leftmenu.menuItems is not null %}col-xl-9{% endif %}">
-                <h1 class="mb-4 text-center">
-                    {{ cup.title }}
+                <h1 class="mb-4">
+                    Tabulky
                 </h1>
 
                 <div class="contents d-flex flex-column gap-5">
@@ -83,7 +96,7 @@ function onStart() {
                             {% if structure.stage == "groups" %}
                                 {% set points = [] %}
 
-                                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-3">
                                     {% for group in structure.groups %}
                                         <div class="col">
                                             <h2 class="h3 mb-3">
@@ -106,7 +119,7 @@ function onStart() {
                                                 {% endfor %}
                                             </div>
 
-                                            <table class="table table-sm">
+                                            <table class="table table-sm mt-0">
                                                 <thead>
                                                     <tr>
                                                         <th>

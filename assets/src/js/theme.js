@@ -85,6 +85,14 @@ var partnersSwiper = new Swiper(".partners-swiper", {
     },
 });
 
+var partnersMcrSwiper = new Swiper(".partners-mcr-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 48,
+    scrollbar: {
+        el: ".swiper-scrollbar",
+    },
+});
+
 var scrollableSwiper = new Swiper(".scrollable-swiper", {
     scrollbar: {
         el: ".swiper-scrollbar",

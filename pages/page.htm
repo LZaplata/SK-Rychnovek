@@ -102,3 +102,41 @@ function onEnd()
         </div>
     </div>
 </div>
+
+{% if page.menu == "mcr" %}
+    <div class="container-fluid py-5" id="partners">
+        <div class="container-lg pt-xl-4">
+            <h2 class="h1 text-center mb-4">
+                Partneři
+            </h2>
+
+            <div class="swiper partners-mcr-swiper partners">
+                <div class="swiper-wrapper d-flex justify-content-around">
+                    <div class="swiper-slide w-auto">
+                        <a href="https://www.gala.cz/" target="_blank">
+                            <img src="{{ 'assets/images/partners/gala.png'|theme }}" alt="gala" class="img-fluid">
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide w-auto">
+                        <a href="https://www.sportbro.tv/" target="_blank">
+                            <img src="{{ 'assets/images/partners/sportbro.png'|theme }}" alt="sportbro" class="img-fluid">
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide w-auto">
+                        <a href="https://pokorny-site.cz/" target="_blank">
+                            <img src="{{ 'assets/images/partners/pokorny-site.png'|theme }}" alt="Pokorný sítě" class="img-fluid">
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide w-auto">
+                        <a href="http://www.nohecmagazin.cz/" target="_blank">
+                            <img src="{{ 'assets/images/partners/nohec-magazin.png'|theme }}" alt="Nohec magazín" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

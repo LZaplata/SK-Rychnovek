@@ -1,17 +1,48 @@
 items:
     -
-        title: MČR
+        title: 'MČR 2024'
         nesting: null
-        type: cms-page
+        type: header
         url: null
         code: cup
-        reference: turnaj
+        reference: null
         cmsPage: null
         replace: null
         viewBag:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
+        items:
+            -
+                title: 'O MČR'
+                type: page
+                code: ''
+                reference: '9'
+                cmsPage: page
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Tabulky
+                type: page
+                code: ''
+                reference: '10'
+                cmsPage: page
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Propozice
+                type: page
+                code: ''
+                reference: '11'
+                cmsPage: page
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
     -
         title: Sporty
         nesting: null
@@ -41,40 +72,52 @@ items:
                     isExternal: '0'
             -
                 title: Hokej
+                nesting: null
                 type: page
+                url: null
                 code: ''
                 reference: '4'
                 cmsPage: page
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
                 title: Nohejbal
+                nesting: null
                 type: page
+                url: null
                 code: ''
                 reference: '5'
                 cmsPage: page
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
                 title: Volejbal
+                nesting: null
                 type: page
+                url: null
                 code: ''
                 reference: '6'
                 cmsPage: page
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
-                title: Kalendář akcí
+                title: 'Kalendář akcí'
+                nesting: null
                 type: page
+                url: null
                 code: ''
                 reference: '7'
                 cmsPage: page
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''

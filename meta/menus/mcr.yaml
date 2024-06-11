@@ -1,0 +1,35 @@
+items:
+    -
+        title: 'O MČR'
+        nesting: null
+        type: page
+        url: null
+        code: ''
+        reference: '9'
+        cmsPage: page
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Tabulky
+        type: page
+        code: ''
+        reference: '10'
+        cmsPage: page
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Propozice
+        type: page
+        code: ''
+        reference: '11'
+        cmsPage: page
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: MČR
