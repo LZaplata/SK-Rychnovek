@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use LZaplata\Pages\Models\Page as PageModel;
+use October\Rain\Support\Facades\Event;
 
 /**
  * Page Component
@@ -61,6 +62,20 @@ class Page extends ComponentBase
     public function onRun()
     {
         $page = PageModel::where($this->property("column"), $this->property("value"))->first();
+        $otherPages = $page->newOtherSiteQuery()->get();
+
+        // Translating URL parameters
+        Event::listen("cms.sitePicker.overrideParams", function($page, $params, $currentSite, $proposedSite) use ($otherPages): array {
+            $otherPage = $otherPages->where("site_id", $proposedSite->id)->first();
+
+            if ($otherPage) {
+                $params["id"] = $otherPage->id;
+                $params["slug"] = $otherPage->slug;
+                $params["fullslug"] = $otherPage->fullslug;
+            }
+
+            return $params;
+        });
 
         if ($page) {
             $this->id = $page->slug;
