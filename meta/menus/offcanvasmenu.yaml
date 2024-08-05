@@ -13,7 +13,8 @@ items:
             cssClass: ''
             isExternal: '0'
         items:
-            -   title: 'O MČR'
+            -
+                title: 'O MČR'
                 nesting: null
                 type: page
                 url: null
@@ -25,19 +26,47 @@ items:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
-            -   title: Tabulky
+            -
+                title: Tabulky
+                nesting: null
                 type: page
+                url: null
                 code: ''
                 reference: '11'
+                cmsPage: page
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Propozice
+                nesting: null
+                type: page
+                url: null
+                code: ''
+                reference: '12'
+                cmsPage: page
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Sponzoři
+                type: page
+                code: ''
+                reference: '13'
                 cmsPage: page
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
-            -   title: Propozice
+            -
+                title: 'Doprovodný program'
                 type: page
                 code: ''
-                reference: '12'
+                reference: '14'
                 cmsPage: page
                 viewBag:
                     isHidden: '0'
