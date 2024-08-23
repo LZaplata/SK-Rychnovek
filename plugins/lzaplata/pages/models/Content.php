@@ -4,9 +4,10 @@ use Backend\Facades\BackendAuth;
 use JanVince\SmallGDPR\Models\CookiesSettings;
 use LZaplata\Gallery\Models\Gallery;
 use Model;
+use October\Rain\Database\Traits\Multisite;
+use Tailor\Classes\BlueprintIndexer;
 use RainLab\Blog\Models\Category;
 use RainLab\Blog\Models\Post;
-use Tailor\Classes\BlueprintIndexer;
 
 /**
  * Model
@@ -15,6 +16,7 @@ class Content extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     use \October\Rain\Database\Traits\SoftDelete;
+    use Multisite;
 
     /**
      * @var array dates to cast from the database.
@@ -31,6 +33,11 @@ class Content extends Model
      */
     public $rules = [
     ];
+
+    /**
+     * @var array
+     */
+    public $propagatable = [];
 
     /**
      * @return array

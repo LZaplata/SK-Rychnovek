@@ -4,6 +4,7 @@ use Backend\Facades\BackendAuth;
 use Cms\Classes\Page as CmsPage;
 use Cms\Classes\Theme;
 use Model;
+use October\Rain\Database\Traits\Multisite;
 use October\Rain\Database\Traits\SimpleTree;
 use October\Rain\Database\Traits\Sortable;
 use RainLab\Pages\Classes\Menu as PagesMenu;
@@ -18,6 +19,7 @@ class Page extends Model
     use \October\Rain\Database\Traits\SoftDelete;
     use SimpleTree;
     use Sortable;
+    use Multisite;
 
     /**
      * @var array dates to cast from the database.
@@ -49,6 +51,11 @@ class Page extends Model
     public $belongsTo = [
         "parent" => Page::class,
     ];
+
+    /**
+     * @var array
+     */
+    public $propagatable = [];
 
     /**
      * @return void
